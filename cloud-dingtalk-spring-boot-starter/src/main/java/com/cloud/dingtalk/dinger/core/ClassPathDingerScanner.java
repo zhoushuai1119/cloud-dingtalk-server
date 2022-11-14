@@ -16,6 +16,7 @@
 package com.cloud.dingtalk.dinger.core;
 
 import com.cloud.dingtalk.dinger.core.spring.DingerFactoryBean;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
@@ -40,8 +41,8 @@ import java.util.Set;
  * @author shuai.zhou
  * @since 1.2
  */
+@Slf4j
 public class ClassPathDingerScanner extends ClassPathBeanDefinitionScanner {
-    private static final Logger log = LoggerFactory.getLogger(ClassPathDingerScanner.class);
     private List<Class<?>> dingerClasses;
     private Class<? extends Annotation> annotationClass;
     private Class<?> markerInterface;
@@ -111,13 +112,12 @@ public class ClassPathDingerScanner extends ClassPathBeanDefinitionScanner {
     }
 
     private void processBeanDefinitions(Set<BeanDefinitionHolder> beanDefinitions) {
-        boolean debugEnabled = log.isDebugEnabled();
         GenericBeanDefinition definition;
         for (BeanDefinitionHolder beanDefinition : beanDefinitions) {
             definition = (GenericBeanDefinition) beanDefinition.getBeanDefinition();
             String beanClassName = definition.getBeanClassName();
 
-            if (debugEnabled) {
+            if (log.isDebugEnabled()) {
                 log.debug("Creating DingerFactoryBean with name '{}' and '{}' dingerInterface",
                         beanDefinition.getBeanName(), beanClassName);
             }
