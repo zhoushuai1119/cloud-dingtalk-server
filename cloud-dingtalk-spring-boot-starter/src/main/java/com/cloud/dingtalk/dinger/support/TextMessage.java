@@ -15,6 +15,7 @@
  */
 package com.cloud.dingtalk.dinger.support;
 
+import cn.hutool.core.date.DateUtil;
 import com.cloud.dingtalk.dinger.config.EnvironConfiguration;
 import com.cloud.dingtalk.dinger.core.entity.DingerRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -41,8 +42,8 @@ public class TextMessage implements CustomMessage {
     public String message(String projectId, DingerRequest request) {
         String content = request.getContent();
         return MessageFormat.format(
-                "【Dinger通知】 {0}\n- 环境: 【{1}】.\n- 内容: {2}.",
-                projectId, environConfiguration.getEnv(), content);
+                "【Dinger通知】 {0}\n- 环境: 【{1}】.\n- 内容: {2}.\n- 时间: {3}",
+                projectId, environConfiguration.getEnv(), content, DateUtil.now());
     }
 
 }
