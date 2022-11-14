@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import java.util.List;
 /**
  * ClassPathScanForResources
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
 public final class ClassPathScanForResources {
@@ -47,7 +47,7 @@ public final class ClassPathScanForResources {
      * 扫描包
      *
      * @param packageSearchPath
-     *          扫描的包路径， <code>classpath*:com.jaemon.dinger/**\/*.class</code>
+     *          扫描的包路径， <code>classpath*:com.shuai.zhou.dinger/**\/*.class</code>
      * @return
      *          包下的所有资源文件集
      */
@@ -62,7 +62,7 @@ public final class ClassPathScanForResources {
 
     /**
      * @param basePackage
-     *          包名， eg： <code>com.jaemon.dinger</code>
+     *          包名， eg： <code>com.shuai.zhou.dinger</code>
      * @return
      *          包下的所有接口集合
      */
@@ -73,7 +73,7 @@ public final class ClassPathScanForResources {
 
     /**
      * @param basePackage
-     *          包名， eg： <code>com.jaemon.dinger</code>
+     *          包名， eg： <code>com.shuai.zhou.dinger</code>
      * @return
      *          包下的所有类集合
      */
@@ -84,7 +84,7 @@ public final class ClassPathScanForResources {
 
     /**
      * @param basePackage
-     *          包名， eg： <code>com.jaemon.dinger</code>
+     *          包名， eg： <code>com.shuai.zhou.dinger</code>
      * @param filterInterface
      *          是否过滤接口
      * @return

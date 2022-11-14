@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ import java.util.Map;
 /**
  * DingTalk Robot
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
 public class DingerRobot extends AbstractDingerSender {
@@ -124,7 +124,7 @@ public class DingerRobot extends AbstractDingerSender {
             }
 
             Map<String, String> headers = new HashMap<>();
-            headers.put("Content-Type", MediaTypeEnum.JSON.type());
+            headers.put("Content-Type", MediaTypeEnum.JSON.getType());
 
             // 异步处理, 直接返回标识id
             if (dinger.isAsync()) {

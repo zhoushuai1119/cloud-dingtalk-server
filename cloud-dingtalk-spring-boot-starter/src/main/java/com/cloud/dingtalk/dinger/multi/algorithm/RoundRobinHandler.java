@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package com.cloud.dingtalk.dinger.multi.algorithm;
 
 import com.cloud.dingtalk.dinger.core.DingerConfig;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,11 +25,11 @@ import java.util.List;
 /**
  * 轮询算法
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Slf4j
 public class RoundRobinHandler implements AlgorithmHandler {
-    private static final Logger log = LoggerFactory.getLogger(RoundRobinHandler.class);
     /** 索引值 */
     private volatile int index = DEFAULT_INDEX;
 
@@ -44,7 +45,7 @@ public class RoundRobinHandler implements AlgorithmHandler {
             if (log.isDebugEnabled()) {
                 log.debug("#{}# 当前使用第{}个机器人", algorithmId(), idx);
             }
-//            System.out.println(String.format("#%s# 当前使用第%d个机器人", algorithmId(), idx));
+            log.info("#{}# 当前使用第{}个机器人", algorithmId(), idx);
         }
 
         return dingerConfigs.get(idx);

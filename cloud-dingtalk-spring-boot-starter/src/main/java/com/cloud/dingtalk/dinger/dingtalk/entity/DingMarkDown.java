@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,9 @@
 package com.cloud.dingtalk.dinger.dingtalk.entity;
 
 import com.cloud.dingtalk.dinger.dingtalk.entity.enums.DingTalkMsgType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -23,10 +26,13 @@ import java.util.Map;
 /**
  * Markdown 消息格式实体
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Data
 public class DingMarkDown extends Message {
+
+    private static final long serialVersionUID = 6194709385531911888L;
 
     /**
      * {@link MarkDown}
@@ -38,15 +44,13 @@ public class DingMarkDown extends Message {
         this.markdown = markdown;
     }
 
-    public MarkDown getMarkdown() {
-        return markdown;
-    }
-
-    public void setMarkdown(MarkDown markdown) {
-        this.markdown = markdown;
-    }
-
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class MarkDown implements Serializable {
+
+        private static final long serialVersionUID = 7587707924225310749L;
+
         /**
          * 首屏会话透出的展示内容, 不会展示在具体的显示内容上
          */
@@ -56,33 +60,11 @@ public class DingMarkDown extends Message {
          */
         private String text;
 
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getText() {
-            return text;
-        }
-
-        public void setText(String text) {
-            this.text = text;
-        }
-
-        public MarkDown() {
-        }
-
-        public MarkDown(String title, String text) {
-            this.title = title;
-            this.text = text;
-        }
     }
 
     @Override
     public void transfer(Map<String, Object> params) {
         this.markdown.text = replaceContent(this.markdown.text, params) + parsePhone(params);
     }
+
 }

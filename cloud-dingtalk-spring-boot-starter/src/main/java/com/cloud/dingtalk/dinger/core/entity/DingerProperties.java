@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ import static com.cloud.dingtalk.dinger.constant.DingerConstant.DINGER_PROP_PREF
 /**
  * 属性配置类
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
 @ConfigurationProperties(prefix = DINGER_PROP_PREFIX)

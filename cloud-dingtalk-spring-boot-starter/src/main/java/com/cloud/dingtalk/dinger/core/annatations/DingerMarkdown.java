@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import java.lang.annotation.*;
  *     void method(@Keyword String keyword, String orderNo, int num, boolean flag) {...}
  * </pre>
  *
- *  @author Jaemon
+ *  @author shuai.zhou
  * @since 1.0
  */
 @Retention(RetentionPolicy.RUNTIME)

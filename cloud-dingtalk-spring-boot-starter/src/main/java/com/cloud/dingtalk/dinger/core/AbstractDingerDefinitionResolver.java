@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * AbsDingerDefinitionResolver
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @version 1.0
  */
 public abstract class AbstractDingerDefinitionResolver<T> extends DingerListenersProperty implements DingerDefinitionResolver<T> {

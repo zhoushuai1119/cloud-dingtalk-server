@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,17 @@
 package com.cloud.dingtalk.dinger.wetalk.entity;
 
 import com.cloud.dingtalk.dinger.wetalk.entity.enums.WeTalkMsgType;
+import lombok.Data;
 
 import java.io.Serializable;
 
 /**
  * 企业微信-消息类型-图片类型
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Data
 public class WeImage extends WeTalkMessage {
 
     /**
@@ -33,17 +35,10 @@ public class WeImage extends WeTalkMessage {
     private Image image;
 
     public WeImage() {
-        setMsgtype(WeTalkMsgType.IMAGE.type());
+        setMsgtype(WeTalkMsgType.IMAGE.getType());
     }
 
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
-
+    @Data
     public static class Image implements Serializable {
         /** 图片内容的base64编码
          */
@@ -53,21 +48,6 @@ public class WeImage extends WeTalkMessage {
          * */
         private String md5;
 
-        public String getBase64() {
-            return base64;
-        }
-
-        public void setBase64(String base64) {
-            this.base64 = base64;
-        }
-
-        public String getMd5() {
-            return md5;
-        }
-
-        public void setMd5(String md5) {
-            this.md5 = md5;
-        }
     }
 
 }

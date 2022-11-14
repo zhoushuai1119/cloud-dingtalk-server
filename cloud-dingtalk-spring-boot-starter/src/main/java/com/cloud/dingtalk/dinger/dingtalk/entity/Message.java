@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,9 @@
 package com.cloud.dingtalk.dinger.dingtalk.entity;
 
 import com.cloud.dingtalk.dinger.constant.DingerConstant;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.util.CollectionUtils;
 
 import java.io.Serializable;
@@ -25,27 +28,17 @@ import java.util.stream.Collectors;
 /**
  * 请求体实体对象
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Message extends DingTalkMessage implements Serializable {
+
+    private static final long serialVersionUID = 8991714419486905480L;
+
     private At at;
-
-    public Message() {
-    }
-
-    public Message(At at) {
-        this.at = at;
-    }
-
-    public At getAt() {
-        return at;
-    }
-
-    public void setAt(At at) {
-        this.at = at;
-    }
-
 
     /**
      * 解析处理
@@ -87,6 +80,9 @@ public class Message extends DingTalkMessage implements Serializable {
     }
 
 
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class At implements Serializable {
         /**
          * 被@人的手机号(在content里添加@人的手机号)
@@ -97,8 +93,6 @@ public class Message extends DingTalkMessage implements Serializable {
          * */
         private Boolean isAtAll = false;
 
-        public At() {
-        }
 
         public At(List<String> atMobiles) {
             this.atMobiles = atMobiles;
@@ -108,25 +102,5 @@ public class Message extends DingTalkMessage implements Serializable {
             this.isAtAll = isAtAll;
         }
 
-        public At(List<String> atMobiles, Boolean isAtAll) {
-            this.atMobiles = atMobiles;
-            this.isAtAll = isAtAll;
-        }
-
-        public List<String> getAtMobiles() {
-            return atMobiles;
-        }
-
-        public void setAtMobiles(List<String> atMobiles) {
-            this.atMobiles = atMobiles;
-        }
-
-        public Boolean getIsAtAll() {
-            return isAtAll;
-        }
-
-        public void setIsAtAll(Boolean atAll) {
-            isAtAll = atAll;
-        }
     }
 }

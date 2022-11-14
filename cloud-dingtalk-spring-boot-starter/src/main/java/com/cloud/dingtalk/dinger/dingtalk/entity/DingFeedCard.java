@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,9 @@ package com.cloud.dingtalk.dinger.dingtalk.entity;
 
 import com.cloud.dingtalk.dinger.core.entity.ImageTextDeo;
 import com.cloud.dingtalk.dinger.dingtalk.entity.enums.DingTalkMsgType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
@@ -25,9 +28,10 @@ import java.util.Map;
 /**
  * FeedCard类型
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Data
 public class DingFeedCard extends DingTalkMessage {
 
     /**
@@ -44,14 +48,7 @@ public class DingFeedCard extends DingTalkMessage {
         this.feedCard = new FeedCard(links);
     }
 
-    public FeedCard getFeedCard() {
-        return feedCard;
-    }
-
-    public void setFeedCard(FeedCard feedCard) {
-        this.feedCard = feedCard;
-    }
-
+    @Data
     public static class FeedCard implements Serializable {
         /**
          * {@link Link}
@@ -65,14 +62,9 @@ public class DingFeedCard extends DingTalkMessage {
             this.links = links;
         }
 
-        public List<Link> getLinks() {
-            return links;
-        }
-
-        public void setLinks(List<Link> links) {
-            this.links = links;
-        }
-
+        @Data
+        @NoArgsConstructor
+        @AllArgsConstructor
         public static class Link implements Serializable {
             /**
              * 单条信息文本
@@ -87,38 +79,6 @@ public class DingFeedCard extends DingTalkMessage {
              */
             private String picURL;
 
-            public Link() {
-            }
-
-            public Link(String title, String messageURL, String picURL) {
-                this.title = title;
-                this.messageURL = messageURL;
-                this.picURL = picURL;
-            }
-
-            public String getTitle() {
-                return title;
-            }
-
-            public void setTitle(String title) {
-                this.title = title;
-            }
-
-            public String getMessageURL() {
-                return messageURL;
-            }
-
-            public void setMessageURL(String messageURL) {
-                this.messageURL = messageURL;
-            }
-
-            public String getPicURL() {
-                return picURL;
-            }
-
-            public void setPicURL(String picURL) {
-                this.picURL = picURL;
-            }
         }
     }
 

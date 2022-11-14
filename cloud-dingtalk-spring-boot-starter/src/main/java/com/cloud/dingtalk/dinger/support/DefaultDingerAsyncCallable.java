@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,18 @@
 package com.cloud.dingtalk.dinger.support;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * 默认异步执行回调
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Slf4j
 public class DefaultDingerAsyncCallable implements DingerAsyncCallback {
-    private static final Logger log = LoggerFactory.getLogger(DefaultDingerAsyncCallable.class);
 
     @Override
     public void execute(String dingerId, String result) {

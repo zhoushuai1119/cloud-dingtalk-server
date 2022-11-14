@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * DingerSessionFactoryBean
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @version 1.2
  */
 public class DingerSessionFactoryBean implements FactoryBean<DingerSessionFactory>, InitializingBean {

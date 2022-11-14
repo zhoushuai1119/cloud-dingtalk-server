@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * DINGTALK线程池配置类
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
 @Configuration
@@ -42,7 +42,6 @@ import java.util.concurrent.ThreadPoolExecutor;
         matchIfMissing = true
 )
 @ConditionalOnBean(DingerRobot.class)
-//@Conditional(AsyncCondition.class)
 @ConditionalOnMissingBean(name = DingerConstant.DINGER_EXECUTOR)
 @EnableConfigurationProperties({DingerThreadPoolProperties.class})
 public class DingerThreadPoolConfig {

@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import com.cloud.dingtalk.dinger.multi.algorithm.AlgorithmHandler;
 import com.cloud.dingtalk.dinger.multi.entity.MultiDingerAlgorithmDefinition;
 import com.cloud.dingtalk.dinger.multi.entity.MultiDingerConfig;
 import com.cloud.dingtalk.dinger.utils.DingerUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -51,11 +52,11 @@ import java.util.*;
  *     <span style="color:green"> }</span>
  * </pre>
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Slf4j
 public class MultiDingerAlgorithmInjectRegister implements ApplicationContextAware, InitializingBean {
-    private static final Logger log = LoggerFactory.getLogger(MultiDingerAlgorithmInjectRegister.class);
     private static ApplicationContext applicationContext;
 
     @Override

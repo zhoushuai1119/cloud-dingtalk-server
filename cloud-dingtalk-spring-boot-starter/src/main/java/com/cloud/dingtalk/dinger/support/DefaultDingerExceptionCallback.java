@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,17 +17,18 @@ package com.cloud.dingtalk.dinger.support;
 
 import com.cloud.dingtalk.dinger.core.entity.DingerCallback;
 import com.cloud.dingtalk.dinger.exception.DingerException;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * 默认消息通知
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Slf4j
 public class DefaultDingerExceptionCallback implements DingerExceptionCallback {
-    private static final Logger log = LoggerFactory.getLogger(DefaultDingerExceptionCallback.class);
 
     @Override
     public void execute(DingerCallback dkExCallable) {

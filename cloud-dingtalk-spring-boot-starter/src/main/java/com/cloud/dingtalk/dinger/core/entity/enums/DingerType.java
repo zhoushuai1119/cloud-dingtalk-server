@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,39 +15,33 @@
  */
 package com.cloud.dingtalk.dinger.core.entity.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * Dinger类型
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@AllArgsConstructor
+@Getter
 public enum DingerType {
     DINGTALK("钉钉", "https://oapi.dingtalk.com/robot/send?access_token=", true),
     WETALK("企业微信", "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=", true),
-    BYTETALK("飞书", "https://open.feishu.cn/open-apis/bot/v2/hook/", true),
+    BYTETALK("飞书", "https://open.feishu.cn/open-apis/bot/v2/hook/", true);
 
-    ;
-
+    /**
+     * Dinger类型
+     */
     private String type;
+    /**
+     * 请求地址url
+     */
     private String robotUrl;
-    /** 是否开启 */
+    /**
+     * 是否开启
+     */
     private boolean enabled;
 
-    DingerType(String type, String robotUrl, boolean enabled) {
-        this.type = type;
-        this.robotUrl = robotUrl;
-        this.enabled = enabled;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public String getRobotUrl() {
-        return robotUrl;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,35 +16,23 @@
 package com.cloud.dingtalk.dinger.multi.entity;
 
 import com.cloud.dingtalk.dinger.multi.DingerConfigHandler;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * MultiDinger
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MultiDinger {
+
     private String key;
+
     private Class<? extends DingerConfigHandler> dingerConfigHandler;
 
-    public MultiDinger(String key, Class<? extends DingerConfigHandler> dingerConfigHandler) {
-        this.key = key;
-        this.dingerConfigHandler = dingerConfigHandler;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public Class<? extends DingerConfigHandler> getDingerConfigHandler() {
-        return dingerConfigHandler;
-    }
-
-    public void setDingerConfigHandler(Class<? extends DingerConfigHandler> dingerConfigHandler) {
-        this.dingerConfigHandler = dingerConfigHandler;
-    }
 }

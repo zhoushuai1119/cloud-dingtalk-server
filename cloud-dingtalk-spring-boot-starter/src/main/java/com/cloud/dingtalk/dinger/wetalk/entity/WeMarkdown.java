@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,9 @@
 package com.cloud.dingtalk.dinger.wetalk.entity;
 
 import com.cloud.dingtalk.dinger.wetalk.entity.enums.WeTalkMsgType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -23,45 +26,27 @@ import java.util.Map;
 /**
  * 企业微信-消息类型-markdown类型
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Data
 public class WeMarkdown extends WeTalkMessage {
     private Markdown markdown;
 
     public WeMarkdown(Markdown markdown) {
-        setMsgtype(WeTalkMsgType.MARKDOWN.type());
+        setMsgtype(WeTalkMsgType.MARKDOWN.getType());
         this.markdown = markdown;
     }
 
-    public Markdown getMarkdown() {
-        return markdown;
-    }
-
-    public void setMarkdown(Markdown markdown) {
-        this.markdown = markdown;
-    }
-
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Markdown implements Serializable {
         /**
          * markdown内容，最长不超过4096个字节，必须是utf8编码
          * */
         private String content;
 
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
-        }
-
-        public Markdown() {
-        }
-
-        public Markdown(String content) {
-            this.content = content;
-        }
     }
 
 
@@ -69,4 +54,5 @@ public class WeMarkdown extends WeTalkMessage {
     public void transfer(Map<String, Object> params) {
         this.markdown.content = replaceContent(this.markdown.content, params);
     }
+
 }

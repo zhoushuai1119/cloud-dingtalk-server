@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import java.lang.annotation.*;
 /**
  * EnableMultiDinger
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
 @Target(ElementType.TYPE)

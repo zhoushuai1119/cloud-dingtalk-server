@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,17 @@
 package com.cloud.dingtalk.dinger.support;
 
 import com.cloud.dingtalk.dinger.core.entity.DingerRequest;
+import lombok.extern.slf4j.Slf4j;
 
 import java.text.MessageFormat;
 
 /**
  * 默认Text消息格式
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Slf4j
 public class TextMessage implements CustomMessage {
 
     @Override
@@ -34,4 +36,5 @@ public class TextMessage implements CustomMessage {
                 "【Dinger通知】 {0}\n- 内容: {1}.",
                 projectId, content);
     }
+
 }

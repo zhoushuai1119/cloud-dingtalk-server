@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,15 +18,21 @@ package com.cloud.dingtalk.dinger.multi.entity;
 import com.cloud.dingtalk.dinger.constant.DingerConstant;
 import com.cloud.dingtalk.dinger.core.DingerConfig;
 import com.cloud.dingtalk.dinger.multi.algorithm.AlgorithmHandler;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 /**
  * MultiDingerAlgorithmDefinition
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MultiDingerAlgorithmDefinition {
     /**
      * dingerClass + {@link DingerConstant#SPOT_SEPERATOR} + {@link AlgorithmHandler}.simpleName
@@ -46,48 +52,8 @@ public class MultiDingerAlgorithmDefinition {
      * 有效的钉钉机器人配置集合
      */
     private List<DingerConfig> dingerConfigs;
+
     /** handler name */
     private String dingerConfigHandlerClassName;
 
-    public MultiDingerAlgorithmDefinition(
-            String key, Class<? extends AlgorithmHandler> algorithm,
-            List<DingerConfig> dingerConfigs, String dingerConfigHandlerClassName
-    ) {
-        this.key = key;
-        this.algorithm = algorithm;
-        this.dingerConfigs = dingerConfigs;
-        this.dingerConfigHandlerClassName = dingerConfigHandlerClassName;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public Class<? extends AlgorithmHandler> getAlgorithm() {
-        return algorithm;
-    }
-
-    public void setAlgorithm(Class<? extends AlgorithmHandler> algorithm) {
-        this.algorithm = algorithm;
-    }
-
-    public List<DingerConfig> getDingerConfigs() {
-        return dingerConfigs;
-    }
-
-    public void setDingerConfigs(List<DingerConfig> dingerConfigs) {
-        this.dingerConfigs = dingerConfigs;
-    }
-
-    public String getDingerConfigHandlerClassName() {
-        return dingerConfigHandlerClassName;
-    }
-
-    public void setDingerConfigHandlerClassName(String dingerConfigHandlerClassName) {
-        this.dingerConfigHandlerClassName = dingerConfigHandlerClassName;
-    }
 }

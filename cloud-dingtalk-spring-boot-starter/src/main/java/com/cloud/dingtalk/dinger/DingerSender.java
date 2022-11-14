@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import com.cloud.dingtalk.dinger.core.entity.enums.MessageSubType;
 /**
  * DingTalk Sender
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
 public interface DingerSender {
@@ -37,26 +37,20 @@ public interface DingerSender {
      *     使用配置的默认钉钉机器人, {@link DingerProperties#getDefaultDinger()}
      * </pre>
      *
-     * @param messageSubType
-     *              消息类型{@link MessageSubType}
-     * @param request
-     *              请求体 {@link DingerRequest}
-     * @return
-     *              响应报文
-     * */
+     * @param messageSubType 消息类型{@link MessageSubType}
+     * @param request        请求体 {@link DingerRequest}
+     * @return 响应报文
+     */
     DingerResponse send(MessageSubType messageSubType, DingerRequest request);
 
     /**
      * 发送消息到指定群
      *
-     * @param dingerType
-     *              Dinger类型 {@link DingerType}
-     * @param messageSubType
-     *              消息类型{@link MessageSubType}
-     * @param request
-     *              请求体 {@link DingerRequest}
-     * @return
-     *              响应报文
-     * */
+     * @param dingerType     Dinger类型 {@link DingerType}
+     * @param messageSubType 消息类型{@link MessageSubType}
+     * @param request        请求体 {@link DingerRequest}
+     * @return 响应报文
+     */
     DingerResponse send(DingerType dingerType, MessageSubType messageSubType, DingerRequest request);
+
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ import java.io.IOException;
 /**
  * DingerAutoConfiguration
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.2
  */
 @Configuration
@@ -47,10 +47,8 @@ public class DingerAutoConfiguration implements InitializingBean {
     private final DingerRobot dingerRobot;
     private final ResourcePatternResolver resourceLoader;
 
-    public DingerAutoConfiguration(
-            DingerProperties dingerProperties,
-            DingerRobot dingerRobot
-    ) {
+    public DingerAutoConfiguration(DingerProperties dingerProperties,
+                                   DingerRobot dingerRobot) {
         this.properties = dingerProperties;
         this.dingerRobot = dingerRobot;
         this.resourceLoader = new PathMatchingResourcePatternResolver();
@@ -75,9 +73,7 @@ public class DingerAutoConfiguration implements InitializingBean {
 
     private void checkConfigFileExists() throws IOException {
 
-        if (
-                StringUtils.hasText(this.properties.getDingerLocations())
-        ) {
+        if (StringUtils.hasText(this.properties.getDingerLocations())) {
 
             Resource[] resources = this.resourceLoader.getResources(this.properties.getDingerLocations());
 

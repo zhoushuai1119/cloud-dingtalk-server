@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package com.cloud.dingtalk.dinger.config;
 
 import com.cloud.dingtalk.dinger.constant.DingerConstant;
+import lombok.Data;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -32,13 +33,14 @@ import java.time.temporal.ChronoUnit;
 /**
  * Dinger默认Http客户端配置
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
 @Configuration
 @ConditionalOnMissingBean(name = DingerConstant.DINGER_REST_TEMPLATE)
 @ConfigurationProperties(prefix = DingerConstant.DINGER_PROPERTIES_PREFIX + "http-client")
 @AutoConfigureAfter(BeanConfiguration.class)
+@Data
 public class DingerHttpClientConfig {
 
     /**
@@ -65,19 +67,4 @@ public class DingerHttpClientConfig {
         return factory;
     }
 
-    public Duration getConnectTimeout() {
-        return connectTimeout;
-    }
-
-    public void setConnectTimeout(Duration connectTimeout) {
-        this.connectTimeout = connectTimeout;
-    }
-
-    public Duration getReadTimeout() {
-        return readTimeout;
-    }
-
-    public void setReadTimeout(Duration readTimeout) {
-        this.readTimeout = readTimeout;
-    }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package com.cloud.dingtalk.dinger.wetalk.entity;
 
 import com.cloud.dingtalk.dinger.constant.DingerConstant;
 import com.cloud.dingtalk.dinger.wetalk.entity.enums.WeTalkMsgType;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.List;
@@ -25,14 +26,14 @@ import java.util.Map;
 /**
  * 企业微信-消息类型-文本类型
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
 public class WeText extends WeTalkMessage {
     private Text text;
 
     public WeText(Text text) {
-        setMsgtype(WeTalkMsgType.TEXT.type());
+        setMsgtype(WeTalkMsgType.TEXT.getType());
         this.text = text;
     }
 
@@ -44,7 +45,11 @@ public class WeText extends WeTalkMessage {
         this.text = text;
     }
 
+    @Data
     public static class Text implements Serializable {
+
+        private static final long serialVersionUID = 7798625281111870232L;
+
         /**
          * 文本内容，最长不超过2048个字节，必须是utf8编码
          * */
@@ -67,29 +72,6 @@ public class WeText extends WeTalkMessage {
          * */
         private List<String> mentioned_mobile_list;
 
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
-        }
-
-        public List<String> getMentioned_list() {
-            return mentioned_list;
-        }
-
-        public void setMentioned_list(List<String> mentioned_list) {
-            this.mentioned_list = mentioned_list;
-        }
-
-        public List<String> getMentioned_mobile_list() {
-            return mentioned_mobile_list;
-        }
-
-        public void setMentioned_mobile_list(List<String> mentioned_mobile_list) {
-            this.mentioned_mobile_list = mentioned_mobile_list;
-        }
 
         public Text() {
         }

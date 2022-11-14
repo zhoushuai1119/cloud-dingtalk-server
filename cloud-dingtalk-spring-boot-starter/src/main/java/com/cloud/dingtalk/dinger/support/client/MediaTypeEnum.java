@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,17 @@
  */
 package com.cloud.dingtalk.dinger.support.client;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * 内容类型枚举
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@AllArgsConstructor
+@Getter
 public enum MediaTypeEnum {
     /** html */
     TEXT_HTML("text/html"),
@@ -58,11 +63,4 @@ public enum MediaTypeEnum {
 
     private String type;
 
-    MediaTypeEnum(String type) {
-        this.type = type;
-    }
-
-    public String type() {
-        return type;
-    }
 }

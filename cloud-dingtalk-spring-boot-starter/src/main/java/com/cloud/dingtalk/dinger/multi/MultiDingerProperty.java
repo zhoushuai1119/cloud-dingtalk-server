@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,18 +23,18 @@ import java.util.Map;
 /**
  * MultiDingerProperty
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
 public class MultiDingerProperty {
-    /** app start at multiDinger */
+    /**
+     * app start at multiDinger
+     */
     static boolean multiDinger = false;
     protected static Map<String, IgnoreMethod> ignoreMethodMap = new HashMap<>();
 
     static {
-        for (
-                IgnoreMethod ignoreMethod : IgnoreMethod.values()
-        ) {
+        for (IgnoreMethod ignoreMethod : IgnoreMethod.values()) {
             ignoreMethodMap.put(ignoreMethod.getMethodName(), ignoreMethod);
         }
     }
@@ -45,5 +45,6 @@ public class MultiDingerProperty {
 
     protected static void clear() {
         ignoreMethodMap.clear();
-    };
+    }
+
 }

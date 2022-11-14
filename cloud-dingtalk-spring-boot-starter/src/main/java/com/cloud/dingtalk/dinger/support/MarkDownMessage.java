@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package com.cloud.dingtalk.dinger.support;
 
 import com.cloud.dingtalk.dinger.constant.DingerConstant;
 import com.cloud.dingtalk.dinger.core.entity.DingerRequest;
+import lombok.extern.slf4j.Slf4j;
 
 import java.text.MessageFormat;
 import java.util.List;
@@ -24,9 +25,10 @@ import java.util.List;
 /**
  * 默认markdown消息格式
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Slf4j
 public class MarkDownMessage implements CustomMessage {
 
     @Override
@@ -45,4 +47,5 @@ public class MarkDownMessage implements CustomMessage {
                 "#### 【Dinger通知】 {0} \n - 项目名称: {1}\n- 内容: {2}",
                 text, projectId, content);
     }
+
 }

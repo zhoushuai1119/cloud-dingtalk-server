@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,17 @@
 package com.cloud.dingtalk.dinger.config;
 
 import com.cloud.dingtalk.dinger.constant.DingerConstant;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * DINGTALK线程池参数配置-用于异步处理
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
 @ConfigurationProperties(prefix = DingerConstant.DINGER_PROPERTIES_PREFIX + "executor-pool")
+@Data
 public class DingerThreadPoolProperties {
     private static final int DEFAULT_CORE_SIZE = Runtime.getRuntime().availableProcessors() + 1;
     /**
@@ -48,43 +50,4 @@ public class DingerThreadPoolProperties {
      */
     private String threadNamePrefix = DingerConstant.DEFAULT_THREAD_NAME_PREFIX;
 
-    public int getCoreSize() {
-        return coreSize;
-    }
-
-    public void setCoreSize(int coreSize) {
-        this.coreSize = coreSize;
-    }
-
-    public int getMaxSize() {
-        return maxSize;
-    }
-
-    public void setMaxSize(int maxSize) {
-        this.maxSize = maxSize;
-    }
-
-    public int getKeepAliveSeconds() {
-        return keepAliveSeconds;
-    }
-
-    public void setKeepAliveSeconds(int keepAliveSeconds) {
-        this.keepAliveSeconds = keepAliveSeconds;
-    }
-
-    public int getQueueCapacity() {
-        return queueCapacity;
-    }
-
-    public void setQueueCapacity(int queueCapacity) {
-        this.queueCapacity = queueCapacity;
-    }
-
-    public String getThreadNamePrefix() {
-        return threadNamePrefix;
-    }
-
-    public void setThreadNamePrefix(String threadNamePrefix) {
-        this.threadNamePrefix = threadNamePrefix;
-    }
 }

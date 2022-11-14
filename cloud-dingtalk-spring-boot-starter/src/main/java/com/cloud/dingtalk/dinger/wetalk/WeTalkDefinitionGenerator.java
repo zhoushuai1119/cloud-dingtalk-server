@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ import com.cloud.dingtalk.dinger.core.entity.xml.MessageTag;
 /**
  * 企业微信消息体定义生成类
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
 public class WeTalkDefinitionGenerator extends DingerDefinitionHandler {
@@ -37,7 +37,6 @@ public class WeTalkDefinitionGenerator extends DingerDefinitionHandler {
      * 生成生成注解文本消息体定义
      */
     public static class AnnotationText extends DingerDefinitionGenerator<DingerText> {
-
         @Override
         public DingerDefinition generator(DingerDefinitionGeneratorContext<DingerText> context) {
             return dingerTextHandler(DingerType.WETALK, context);
@@ -60,7 +59,6 @@ public class WeTalkDefinitionGenerator extends DingerDefinitionHandler {
      * 生成XML文本消息体定义
      */
     public static class XmlText extends DingerDefinitionGenerator<MessageTag> {
-
         @Override
         public DingerDefinition generator(DingerDefinitionGeneratorContext<MessageTag> context) {
             return xmlHandler(DingerDefinitionType.WETALK_XML_TEXT, context);

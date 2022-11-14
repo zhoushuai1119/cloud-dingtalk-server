@@ -3,7 +3,7 @@ package com.cloud.dingtalk.dinger.core.entity;
 /**
  * DingerMethod
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @version 1.0
  */
 public class DingerMethod {

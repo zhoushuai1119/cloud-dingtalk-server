@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,17 @@
 package com.cloud.dingtalk.dinger.dingtalk.entity;
 
 import com.cloud.dingtalk.dinger.dingtalk.entity.enums.DingTalkMsgType;
+import lombok.Data;
 
 import java.io.Serializable;
 
 /**
  * 整体跳转ActionCard类型
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Data
 public class DingSingleActionCard extends DingTalkMessage {
 
     /**
@@ -36,15 +38,11 @@ public class DingSingleActionCard extends DingTalkMessage {
         setMsgtype(DingTalkMsgType.ACTION_CARD.type());
     }
 
-    public SingleActionCard getActionCard() {
-        return actionCard;
-    }
-
-    public void setActionCard(SingleActionCard actionCard) {
-        this.actionCard = actionCard;
-    }
-
+    @Data
     public static class SingleActionCard implements Serializable {
+
+        private static final long serialVersionUID = 4909445375844530383L;
+
         /**
          * 首屏会话透出的展示内容
          */
@@ -66,44 +64,5 @@ public class DingSingleActionCard extends DingTalkMessage {
          */
         private String singleURL;
 
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getText() {
-            return text;
-        }
-
-        public void setText(String text) {
-            this.text = text;
-        }
-
-        public String getBtnOrientation() {
-            return btnOrientation;
-        }
-
-        public void setBtnOrientation(String btnOrientation) {
-            this.btnOrientation = btnOrientation;
-        }
-
-        public String getSingleTitle() {
-            return singleTitle;
-        }
-
-        public void setSingleTitle(String singleTitle) {
-            this.singleTitle = singleTitle;
-        }
-
-        public String getSingleURL() {
-            return singleURL;
-        }
-
-        public void setSingleURL(String singleURL) {
-            this.singleURL = singleURL;
-        }
     }
 }

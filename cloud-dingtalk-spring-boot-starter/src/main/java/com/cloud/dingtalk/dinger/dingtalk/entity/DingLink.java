@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,9 @@ package com.cloud.dingtalk.dinger.dingtalk.entity;
 import com.cloud.dingtalk.dinger.core.entity.LinkDeo;
 import com.cloud.dingtalk.dinger.core.annatations.DingerLink;
 import com.cloud.dingtalk.dinger.dingtalk.entity.enums.DingTalkMsgType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -25,9 +28,10 @@ import java.util.Map;
 /**
  * Link类型
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Data
 public class DingLink extends DingTalkMessage {
     /** {@link Link} */
     private Link link;
@@ -41,14 +45,10 @@ public class DingLink extends DingTalkMessage {
         this.link = link;
     }
 
-    public Link getLink() {
-        return link;
-    }
 
-    public void setLink(Link link) {
-        this.link = link;
-    }
-
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Link implements Serializable {
         /** 消息标题 */
         private String title;
@@ -58,48 +58,6 @@ public class DingLink extends DingTalkMessage {
         private String messageUrl;
         /** 图片URL */
         private String picUrl;
-
-        public Link() {
-        }
-
-        public Link(String title, String text, String messageUrl, String picUrl) {
-            this.title = title;
-            this.text = text;
-            this.messageUrl = messageUrl;
-            this.picUrl = picUrl;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getText() {
-            return text;
-        }
-
-        public void setText(String text) {
-            this.text = text;
-        }
-
-        public String getMessageUrl() {
-            return messageUrl;
-        }
-
-        public void setMessageUrl(String messageUrl) {
-            this.messageUrl = messageUrl;
-        }
-
-        public String getPicUrl() {
-            return picUrl;
-        }
-
-        public void setPicUrl(String picUrl) {
-            this.picUrl = picUrl;
-        }
     }
 
     @Override

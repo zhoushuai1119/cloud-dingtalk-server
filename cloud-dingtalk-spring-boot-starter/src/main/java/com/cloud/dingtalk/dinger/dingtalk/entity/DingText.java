@@ -1,5 +1,5 @@
 /*
- * Copyright ©2015-2022 Jaemon. All Rights Reserved.
+ * Copyright ©2015-2022 shuai.zhou. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,9 @@
 package com.cloud.dingtalk.dinger.dingtalk.entity;
 
 import com.cloud.dingtalk.dinger.dingtalk.entity.enums.DingTalkMsgType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -23,9 +26,10 @@ import java.util.Map;
 /**
  * Text 消息格式实体
  *
- * @author Jaemon
+ * @author shuai.zhou
  * @since 1.0
  */
+@Data
 public class DingText extends Message {
 
     /**
@@ -38,35 +42,16 @@ public class DingText extends Message {
         this.text = text;
     }
 
-    public Text getText() {
-        return text;
-    }
-
-    public void setText(Text text) {
-        this.text = text;
-    }
-
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Text implements Serializable {
         private String content;
-
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
-        }
-
-        public Text() {
-        }
-
-        public Text(String content) {
-            this.content = content;
-        }
     }
 
     @Override
     public void transfer(Map<String, Object> params) {
         this.text.content = replaceContent(this.text.content, params) + parsePhone(params);
     }
+
 }
