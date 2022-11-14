@@ -4,5 +4,4 @@ com.cloud.dingtalk.dinger.config.BeanConfiguration,\
 com.cloud.dingtalk.dinger.config.DingerAutoConfiguration,\
 com.cloud.dingtalk.dinger.config.DingerConfiguration,\
 com.cloud.dingtalk.dinger.config.DingerHttpClientConfig,\
-com.cloud.dingtalk.dinger.config.DingerThreadPoolConfig,\
-com.cloud.dingtalk.dinger.config.EnvConfig
+com.cloud.dingtalk.dinger.config.DingerThreadPoolConfig
