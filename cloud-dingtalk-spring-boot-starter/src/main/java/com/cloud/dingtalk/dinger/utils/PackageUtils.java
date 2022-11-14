@@ -16,8 +16,7 @@
 package com.cloud.dingtalk.dinger.utils;
 
 import com.cloud.dingtalk.dinger.core.spring.ApplicationHome;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -39,8 +38,8 @@ import java.util.stream.Collectors;
  * @author shuai.zhou
  * @since 1.0
  */
+@Slf4j
 public class PackageUtils {
-    private static final Logger log = LoggerFactory.getLogger(PackageUtils.class);
     private static final ApplicationHome applicationHome = new ApplicationHome();
 
     public static final String SPOT = ".";
@@ -179,8 +178,7 @@ public class PackageUtils {
             while (entries.hasMoreElements()) {
                 JarEntry jarEntry = (JarEntry) entries.nextElement();
                 String namePath = jarEntry.getName();
-                if (namePath.contains(packageName) &&
-                        namePath.endsWith(".class") /*&& !namePath.contains("$")*/) {
+                if (namePath.contains(packageName) && namePath.endsWith(".class") /*&& !namePath.contains("$")*/) {
                     namePath = namePath.substring(namePath.indexOf(packageName));
                     String className = namePath.replaceAll("/", ".").replace(".class", "");
                     // bugfix gitee#I29N15

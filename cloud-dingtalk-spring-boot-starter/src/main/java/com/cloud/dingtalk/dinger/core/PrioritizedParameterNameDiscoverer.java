@@ -15,12 +15,13 @@
  */
 package com.cloud.dingtalk.dinger.core;
 
+import cn.hutool.core.util.ArrayUtil;
+import org.springframework.core.ParameterNameDiscoverer;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
-
-import org.springframework.core.ParameterNameDiscoverer;
 
 /**
  * {@link ParameterNameDiscoverer} implementation that tries several discoverer
@@ -52,7 +53,7 @@ public class PrioritizedParameterNameDiscoverer implements ParameterNameDiscover
     public String[] getParameterNames(Method method) {
         for (ParameterNameDiscoverer pnd : this.parameterNameDiscoverers) {
             String[] result = pnd.getParameterNames(method);
-            if (result != null) {
+            if (ArrayUtil.isNotEmpty(result)) {
                 return result;
             }
         }
@@ -63,7 +64,7 @@ public class PrioritizedParameterNameDiscoverer implements ParameterNameDiscover
     public String[] getParameterNames(Constructor<?> ctor) {
         for (ParameterNameDiscoverer pnd : this.parameterNameDiscoverers) {
             String[] result = pnd.getParameterNames(ctor);
-            if (result != null) {
+            if (ArrayUtil.isNotEmpty(result)) {
                 return result;
             }
         }

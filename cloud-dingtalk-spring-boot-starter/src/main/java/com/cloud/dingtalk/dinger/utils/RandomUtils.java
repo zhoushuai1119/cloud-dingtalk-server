@@ -33,10 +33,6 @@ public class RandomUtils {
      */
     public static final Random JVM_RANDOM = new JVMRandom();
 
-// should be possible for JVM_RANDOM?
-//    public static void nextBytes(byte[]) {
-//    public synchronized double nextGaussian();
-//    }
 
     /**
      * <p>Returns the next pseudorandom, uniformly distributed int value

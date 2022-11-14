@@ -49,21 +49,15 @@ public class DingerHandleProxy extends DingerInvocationHandler {
 
         final String methodName = method.getName();
 
-        if (
-                ignoreMethodMap.containsKey(methodName)
-        ) {
+        if (ignoreMethodMap.containsKey(methodName)) {
             return ignoreMethodMap.get(methodName).execute(this, args);
         }
 
-        if (
-                dingerClass.isAnnotationPresent(DingerClose.class)
-        ) {
+        if (dingerClass.isAnnotationPresent(DingerClose.class)) {
             return null;
         }
 
-        if (
-                method.isAnnotationPresent(DingerClose.class)
-        ) {
+        if (method.isAnnotationPresent(DingerClose.class)) {
             return null;
         }
 

@@ -15,6 +15,8 @@
  */
 package com.cloud.dingtalk.dinger.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.Closeable;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -48,7 +50,7 @@ public class DingerUtils {
      * @return result
      */
     public static String byteArrayToBase64(byte[] bytes) {
-        return new java.lang.String(Base64.getEncoder().encode(bytes));
+        return new String(Base64.getEncoder().encode(bytes));
     }
 
     /**
@@ -75,7 +77,7 @@ public class DingerUtils {
      * @return true | false
      */
     public static boolean isEmpty(String str) {
-        return (str == null || "".equals(str.trim()));
+        return StringUtils.isBlank(str);
     }
 
     /**
@@ -85,7 +87,7 @@ public class DingerUtils {
      * @return true | false
      */
     public static boolean isNotEmpty(String str) {
-        return !isEmpty(str);
+        return StringUtils.isNotBlank(str);
     }
 
     /**
