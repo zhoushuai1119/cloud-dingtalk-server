@@ -93,18 +93,16 @@ public class DingerHandler implements AlgorithmHandler {
                             algorithmId(), COUNT_THRESHOLD, currentMinite, count, now, index);
                 }
 
-//                System.out.println(String.format("#%s-%d# 在%s分内发送了%d次, 当前分钟=%s, 下一个机器人=%d.",
-//                        algorithmId(), COUNT_THRESHOLD, currentMinite, count, now, index));
+                log.info("#{}-{}# 在{}分内发送了{}次, 当前分钟={}, 下一个机器人={}.",
+                        algorithmId(), COUNT_THRESHOLD, currentMinite, count, now, index);
             } else if (!countBool && !inMinute) {
                 currentMinite = now;
                 counter.set(1);
 
-                if (log.isDebugEnabled()) {
-                    log.debug("#{}-{}# 在{}分内发送了{}次, 当前分钟={}, 当前机器人={}.",
+                if (log.isInfoEnabled()) {
+                    log.info("#{}-{}# 在{}分内发送了{}次, 当前分钟={}, 当前机器人={}.",
                             algorithmId(), COUNT_THRESHOLD, currentMinite, count, now, index);
                 }
-//                System.out.println(String.format("#%s-%d# 在%s分内发送了%d次, 当前分钟=%s, 当前机器人=%d.",
-//                        algorithmId(), COUNT_THRESHOLD, currentMinite, count, now, index));
             }
 
         }

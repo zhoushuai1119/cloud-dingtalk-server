@@ -26,6 +26,7 @@ import com.cloud.dingtalk.dinger.core.entity.enums.DingerDefinitionType;
 import com.cloud.dingtalk.dinger.core.entity.enums.DingerType;
 import com.cloud.dingtalk.dinger.core.entity.xml.MessageTag;
 import com.cloud.dingtalk.dinger.core.annatations.DingerLink;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,14 +36,13 @@ import org.slf4j.LoggerFactory;
  * @author shuai.zhou
  * @since 1.0
  */
+@Slf4j
 public class DingTalkDefinitionGenerator extends DingerDefinitionHandler {
-    private static final Logger log = LoggerFactory.getLogger(DingerDefinitionGenerator.class);
 
     /**
      * 生成生成注解文本消息体定义
      */
     public static class AnotationText extends DingerDefinitionGenerator<DingerText> {
-
         @Override
         public DingerDefinition generator(DingerDefinitionGeneratorContext<DingerText> context) {
             return dingerTextHandler(DingerType.DINGTALK, context);
@@ -65,7 +65,6 @@ public class DingTalkDefinitionGenerator extends DingerDefinitionHandler {
      * 生成XML文本消息体定义
      */
     public static class XmlText extends DingerDefinitionGenerator<MessageTag> {
-
         @Override
         public DingerDefinition generator(DingerDefinitionGeneratorContext<MessageTag> context) {
             return xmlHandler(DingerDefinitionType.DINGTALK_XML_TEXT, context);
