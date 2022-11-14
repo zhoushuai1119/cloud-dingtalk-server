@@ -5,6 +5,9 @@ spring:
   application:
     name: cloud-dingtalk-example
 
+  profiles:
+    active: dev
+
   dinger:
     project-id: ${spring.application.name}
     default-dinger: wetalk
