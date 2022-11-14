@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: cloud-dingtalk-example
+
+  dinger:
+    project-id: ${spring.application.name}
+    default-dinger: wetalk
+    dingers:
+      wetalk:
+        token-id: 302f1dfd-cd32-410b-aedd-6484c865b24d
+
+
+
+
+
+

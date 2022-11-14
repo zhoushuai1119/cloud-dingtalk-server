@@ -1,7 +1,7 @@
-# cloud-dingtalk-server
+# cloud-dingtalk-spring-boot-starter
 
 #### Description
-集成钉钉，企业微信和飞书发送消息
+集成钉钉和企业微信和飞书发送信息
 
 #### Software Architecture
 Software architecture description
