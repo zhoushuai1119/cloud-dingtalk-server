@@ -37,7 +37,7 @@ public class DingLink extends DingTalkMessage {
     private Link link;
 
     public DingLink() {
-        setMsgtype(DingTalkMsgType.LINK.type());
+        setMsgtype(DingTalkMsgType.LINK.getType());
     }
 
     public DingLink(Link link) {
