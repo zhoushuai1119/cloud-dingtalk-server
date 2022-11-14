@@ -17,8 +17,6 @@ package com.cloud.dingtalk.dinger.core;
 
 import com.cloud.dingtalk.dinger.core.spring.DingerFactoryBean;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
