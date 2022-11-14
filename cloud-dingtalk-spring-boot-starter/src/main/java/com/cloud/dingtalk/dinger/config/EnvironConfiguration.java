@@ -1,6 +1,6 @@
 package com.cloud.dingtalk.dinger.config;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -17,10 +17,10 @@ import org.springframework.context.annotation.Configuration;
  * @version: v1
  */
 @Configuration
-@Data
 @Slf4j
-public class EnvConfig implements InitializingBean, ApplicationContextAware {
+public class EnvironConfiguration implements InitializingBean, ApplicationContextAware {
 
+    @Getter
     private String env;
 
     private ApplicationContext applicationContext;

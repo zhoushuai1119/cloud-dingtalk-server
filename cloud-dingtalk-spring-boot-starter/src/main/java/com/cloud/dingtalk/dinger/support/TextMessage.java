@@ -15,7 +15,7 @@
  */
 package com.cloud.dingtalk.dinger.support;
 
-import com.cloud.dingtalk.dinger.config.EnvConfig;
+import com.cloud.dingtalk.dinger.config.EnvironConfiguration;
 import com.cloud.dingtalk.dinger.core.entity.DingerRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +35,14 @@ public class TextMessage implements CustomMessage {
      * 环境
      */
     @Autowired
-    private EnvConfig envConfig;
+    private EnvironConfiguration environConfiguration;
 
     @Override
     public String message(String projectId, DingerRequest request) {
         String content = request.getContent();
         return MessageFormat.format(
                 "【Dinger通知】 {0}\n- 环境: 【{1}】.\n- 内容: {2}.",
-                projectId, envConfig.getEnv(), content);
+                projectId, environConfiguration.getEnv(), content);
     }
 
 }
