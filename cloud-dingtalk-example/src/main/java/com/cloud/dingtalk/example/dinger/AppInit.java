@@ -2,10 +2,11 @@ package com.cloud.dingtalk.example.dinger;
 
 import com.cloud.dingtalk.dinger.DingerSender;
 import com.cloud.dingtalk.dinger.core.entity.DingerRequest;
-import com.cloud.dingtalk.dinger.core.entity.enums.MessageSubType;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * @description:
@@ -21,10 +22,10 @@ public class AppInit implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
+        List<String> phones = List.of("17756228281");
         // 发送text类型消息
         dingerSender.send(
-                MessageSubType.TEXT,
-                DingerRequest.request("服务 Hello World, Hello Dinger")
+                DingerRequest.request("服务 Hello World, Hello Dinger", phones)
         );
     }
 }

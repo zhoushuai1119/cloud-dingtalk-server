@@ -15,6 +15,8 @@
  */
 package com.cloud.dingtalk.dinger.core.entity;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,14 +26,24 @@ import java.util.List;
  * @author shuai.zhou
  * @since 1.0
  */
+@Data
 public class DingerRequest {
-    /** 消息内容 */
+
+    /**
+     * 消息内容
+     */
     private String content;
-    /** 标题(dingtalk-markdown) */
+    /**
+     * 标题(dingtalk-markdown)
+     */
     private String title;
-    /** 艾特成员信息 */
+    /**
+     * 艾特成员信息
+     */
     private List<String> phones = new ArrayList<>();
-    /** 艾特成员 */
+    /**
+     * 艾特成员
+     */
     private boolean atAll = false;
 
     private DingerRequest(String content) {
@@ -67,10 +79,8 @@ public class DingerRequest {
     /**
      * 构建Dinger请求体
      *
-     * @param content
-     *          具体消息内容
-     * @return
-     *          Dinger请求体实例
+     * @param content 具体消息内容
+     * @return Dinger请求体实例
      */
     public static DingerRequest request(String content) {
         return new DingerRequest(content);
@@ -79,12 +89,9 @@ public class DingerRequest {
     /**
      * 构建Dinger请求体
      *
-     * @param content
-     *          具体消息内容
-     * @param title
-     *          标题， 仅限钉钉markdown消息使用
-     * @return
-     *          Dinger请求体实例
+     * @param content 具体消息内容
+     * @param title   标题， 仅限钉钉markdown消息使用
+     * @return Dinger请求体实例
      */
     public static DingerRequest request(String content, String title) {
         return new DingerRequest(content, title);
@@ -93,12 +100,9 @@ public class DingerRequest {
     /**
      * 构建Dinger请求体
      *
-     * @param content
-     *          具体消息内容
-     * @param phones
-     *          需要@的成员列表
-     * @return
-     *          Dinger请求体实例
+     * @param content 具体消息内容
+     * @param phones  需要@的成员列表
+     * @return Dinger请求体实例
      */
     public static DingerRequest request(String content, List<String> phones) {
         return new DingerRequest(content, phones);
@@ -107,12 +111,9 @@ public class DingerRequest {
     /**
      * 构建Dinger请求体
      *
-     * @param content
-     *          具体消息内容
-     * @param atAll
-     *          是否需要@全部成员
-     * @return
-     *          Dinger请求体实例
+     * @param content 具体消息内容
+     * @param atAll   是否需要@全部成员
+     * @return Dinger请求体实例
      */
     public static DingerRequest request(String content, boolean atAll) {
         return new DingerRequest(content, atAll);
@@ -121,14 +122,10 @@ public class DingerRequest {
     /**
      * 构建Dinger请求体
      *
-     * @param content
-     *          具体消息内容
-     * @param title
-     *          标题， 仅限钉钉markdown消息使用
-     * @param phones
-     *          需要@的成员列表
-     * @return
-     *          Dinger请求体实例
+     * @param content 具体消息内容
+     * @param title   标题， 仅限钉钉markdown消息使用
+     * @param phones  需要@的成员列表
+     * @return Dinger请求体实例
      */
     public static DingerRequest request(String content, String title, List<String> phones) {
         return new DingerRequest(content, title, phones);
@@ -137,49 +134,13 @@ public class DingerRequest {
     /**
      * 构建Dinger请求体
      *
-     * @param content
-     *          具体消息内容
-     * @param title
-     *          标题， 仅限钉钉markdown消息使用
-     * @param atAll
-     *          是否需要@全部成员
-     * @return
-     *          Dinger请求体实例
+     * @param content 具体消息内容
+     * @param title   标题， 仅限钉钉markdown消息使用
+     * @param atAll   是否需要@全部成员
+     * @return Dinger请求体实例
      */
     public static DingerRequest request(String content, String title, boolean atAll) {
         return new DingerRequest(content, title, atAll);
     }
 
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public List<String> getPhones() {
-        return phones;
-    }
-
-    public void setPhones(List<String> phones) {
-        this.phones = phones;
-    }
-
-    public boolean isAtAll() {
-        return atAll;
-    }
-
-    public void setAtAll(boolean atAll) {
-        this.atAll = atAll;
-    }
 }

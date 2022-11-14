@@ -17,18 +17,18 @@ package com.cloud.dingtalk.dinger.config;
 
 import com.cloud.dingtalk.dinger.constant.DingerConstant;
 import lombok.Data;
+import okhttp3.ConnectionPool;
+import okhttp3.OkHttpClient;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.convert.DurationUnit;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Dinger默认Http客户端配置
@@ -46,25 +46,41 @@ public class DingerHttpClientConfig {
     /**
      * 连接超时时间
      */
-    @DurationUnit(ChronoUnit.SECONDS)
-    private Duration connectTimeout = Duration.ofSeconds(30);
+    private Integer connectTimeout = 10;
     /**
      * 读超时时间
      */
-    @DurationUnit(ChronoUnit.SECONDS)
-    private Duration readTimeout = Duration.ofSeconds(30);
+    private Integer readTimeout = 20;
+    /**
+     * 连接池中整体的空闲连接的最大数量
+     */
+    private Integer maxIdleConnections = 200;
+    /**
+     * 连接空闲时间最多为 300 秒
+     */
+    private Long keepAliveDuration = 300L;
 
     @Bean(name = DingerConstant.DINGER_REST_TEMPLATE)
-    public RestTemplate restTemplate(ClientHttpRequestFactory dingerClientHttpRequestFactory) {
-        return new RestTemplate(dingerClientHttpRequestFactory);
+    public RestTemplate restTemplate(ClientHttpRequestFactory okHttp3ClientHttpRequestFactory) {
+        return new RestTemplate(okHttp3ClientHttpRequestFactory);
     }
 
-    @Bean(name = "dingerClientHttpRequestFactory")
-    public ClientHttpRequestFactory dingerClientHttpRequestFactory() {
-        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
-        factory.setReadTimeout((int) readTimeout.toMillis());
-        factory.setConnectTimeout((int) connectTimeout.toMillis());
-        return factory;
+    @Bean(name = "okHttp3ClientHttpRequestFactory")
+    public ClientHttpRequestFactory httpRequestFactory() {
+        return new OkHttp3ClientHttpRequestFactory(okHttpConfigClient());
+    }
+
+    public OkHttpClient okHttpConfigClient(){
+        return new OkHttpClient().newBuilder()
+                .connectionPool(pool())
+                .connectTimeout(connectTimeout, TimeUnit.SECONDS)
+                .readTimeout(readTimeout, TimeUnit.SECONDS)
+                .hostnameVerifier((hostname, session) -> true)
+                .build();
+    }
+
+    public ConnectionPool pool() {
+        return new ConnectionPool(maxIdleConnections, keepAliveDuration, TimeUnit.SECONDS);
     }
 
 }

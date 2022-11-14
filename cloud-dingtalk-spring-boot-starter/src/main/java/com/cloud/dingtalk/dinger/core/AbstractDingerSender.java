@@ -15,14 +15,13 @@
  */
 package com.cloud.dingtalk.dinger.core;
 
+import com.cloud.dingtalk.dinger.DingerSender;
 import com.cloud.dingtalk.dinger.core.entity.DingerCallback;
 import com.cloud.dingtalk.dinger.core.entity.DingerProperties;
 import com.cloud.dingtalk.dinger.core.entity.enums.MessageSubType;
-import com.cloud.dingtalk.dinger.DingerSender;
 import com.cloud.dingtalk.dinger.exception.DingerException;
 import com.cloud.dingtalk.dinger.support.CustomMessage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * AbstractDingTalkSender
@@ -30,10 +29,8 @@ import org.slf4j.LoggerFactory;
  * @author shuai.zhou
  * @since 1.0
  */
-public abstract class AbstractDingerSender
-        extends DingerHelper
-        implements DingerSender {
-    protected static final Logger log = LoggerFactory.getLogger(AbstractDingerSender.class);
+@Slf4j
+public abstract class AbstractDingerSender extends DingerHelper implements DingerSender {
 
     protected DingerProperties dingerProperties;
     protected DingerManagerBuilder dingTalkManagerBuilder;
@@ -71,4 +68,5 @@ public abstract class AbstractDingerSender
         DingerCallback dkExCallable = new DingerCallback(dingerId, message, ex);
         dingTalkManagerBuilder.dingerExceptionCallback.execute(dkExCallable);
     }
+
 }

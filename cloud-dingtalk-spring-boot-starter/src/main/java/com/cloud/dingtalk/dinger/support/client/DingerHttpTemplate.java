@@ -46,4 +46,5 @@ public class DingerHttpTemplate extends AbstractDingerHttpClient {
         HttpEntity<T> request = new HttpEntity<>(message, httpHeaders);
         return restTemplate.postForObject(url, request, String.class);
     }
+
 }

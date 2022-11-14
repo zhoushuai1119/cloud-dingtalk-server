@@ -29,13 +29,22 @@ import com.cloud.dingtalk.dinger.core.entity.enums.MessageSubType;
  */
 public interface DingerSender {
 
+    /**
+     * 发送消息到指定群
+     * <p>
+     * 使用配置的默认钉钉机器人, {@link DingerProperties#getDefaultDinger()}
+     * <p>
+     * 使用配置的默认消息类型TEXT,{@link MessageSubType}
+     *
+     * @param request 请求体 {@link DingerRequest}
+     * @return 响应报文
+     */
+    DingerResponse send(DingerRequest request);
 
     /**
      * 发送消息到指定群
-     *
-     * <pre>
-     *     使用配置的默认钉钉机器人, {@link DingerProperties#getDefaultDinger()}
-     * </pre>
+     * <p>
+     * 使用配置的默认钉钉机器人, {@link DingerProperties#getDefaultDinger()}
      *
      * @param messageSubType 消息类型{@link MessageSubType}
      * @param request        请求体 {@link DingerRequest}

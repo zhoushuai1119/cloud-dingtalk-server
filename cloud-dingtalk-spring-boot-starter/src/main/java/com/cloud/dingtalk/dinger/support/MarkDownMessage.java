@@ -18,6 +18,7 @@ package com.cloud.dingtalk.dinger.support;
 import com.cloud.dingtalk.dinger.constant.DingerConstant;
 import com.cloud.dingtalk.dinger.core.entity.DingerRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
 
 import java.text.MessageFormat;
 import java.util.List;
@@ -38,7 +39,7 @@ public class MarkDownMessage implements CustomMessage {
         List<String> phones = request.getPhones();
         // markdown在text内容里需要有@手机号
         StringBuilder text = new StringBuilder(title);
-        if (phones != null && !phones.isEmpty()) {
+        if (CollectionUtils.isNotEmpty(phones)) {
             for (String phone : phones) {
                 text.append(DingerConstant.DINGER_AT).append(phone);
             }
