@@ -19,8 +19,8 @@ import com.cloud.dingtalk.dinger.core.entity.enums.DingerType;
 import com.cloud.dingtalk.dinger.exception.InvalidPropertiesFormatException;
 import com.cloud.dingtalk.dinger.utils.ConfigTools;
 import com.cloud.dingtalk.dinger.utils.DingerUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -37,8 +37,9 @@ import static com.cloud.dingtalk.dinger.constant.DingerConstant.DINGER_PROP_PREF
  * @since 1.0
  */
 @ConfigurationProperties(prefix = DINGER_PROP_PREFIX)
+@Data
+@Slf4j
 public class DingerProperties implements InitializingBean {
-    private static final Logger log = LoggerFactory.getLogger(DingerProperties.class);
 
     /**
      * 是否启用DingTalk, 默认true, 选填
@@ -52,82 +53,36 @@ public class DingerProperties implements InitializingBean {
 
     /**
      * 项目名称, 必填 <code>eg: ${spring.application.name}</code>
-     * */
+     */
     private String projectId;
 
     /**
      * dinger xml配置路径(需要配置xml方式Dinger时必填), 选填
      *
      * <blockquote>
-     *     spring.dinger.dinger-locations: classpath*:dinger/*.xml
-     *     spring.dinger.dinger-locations: classpath*:dinger/*\/*.xml
+     * spring.dinger.dinger-locations: classpath*:dinger/*.xml
+     * spring.dinger.dinger-locations: classpath*:dinger/*\/*.xml
      * </blockquote>
-     * */
+     */
     private String dingerLocations;
 
-    /** 默认的Dinger, 不指定则使用{@link DingerProperties#dingers}中的第一个, 选填 */
+    /**
+     * 默认的Dinger, 不指定则使用{@link DingerProperties#dingers}中的第一个, 选填
+     */
     private DingerType defaultDinger;
 
-    public boolean isEnabled() {
-        return enabled;
-    }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public Map<DingerType, Dinger> getDingers() {
-        return dingers;
-    }
-
-    public void setDingers(Map<DingerType, Dinger> dingers) {
-        this.dingers = dingers;
-    }
-
-    public String getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(String projectId) {
-        this.projectId = projectId;
-    }
-
-    public String getDingerLocations() {
-        return dingerLocations;
-    }
-
-    public void setDingerLocations(String dingerLocations) {
-        this.dingerLocations = dingerLocations;
-    }
-
-    public DingerType getDefaultDinger() {
-        return defaultDinger;
-    }
-
-    public void setDefaultDinger(DingerType defaultDinger) {
-        this.defaultDinger = defaultDinger;
-    }
-
+    @Data
     public static class Dinger {
         /**
          * 请求地址前缀-选填
-         * */
+         */
         private String robotUrl;
         /**
          * 获取 access_token, 必填
          *
-         * <blockquote>
-         *     填写Dinger机器人设置中 webhook access_token | key后面的值
-         *      <br /><br />
-         *
-         *      <ul>
-         *          <li>DingTalk： https://oapi.dingtalk.com/robot/send?access_token=c60d4824e0ba4a30544e81212256789331d68b0085ed1a5b2279715741355fbc</li>
-         *          <li>tokenId=c60d4824e0ba4a30544e81212256789331d68b0085ed1a5b2279715741355fbc</li>
-         *          <li>WeTalk： https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=20201220-7082-46d5-8a39-2ycy23b6df89</li>
-         *          <li>tokenId=20201220-7082-46d5-8a39-2ycy23b6df89</li>
-         *      </ul>
-         * </blockquote>
-         * */
+         * 填写Dinger机器人设置中 webhook access_token | key后面的值
+         */
         private String tokenId;
         /**
          * 选填, 签名秘钥。 需要验签时必填(钉钉机器人提供)
@@ -141,7 +96,7 @@ public class DingerProperties implements InitializingBean {
 
         /**
          * 选填(当decrypt=true时, 必填), 解密密钥
-         *
+         * <p>
          * <br /><br />
          *
          * <b>解密密钥获取方式</b>
@@ -157,53 +112,6 @@ public class DingerProperties implements InitializingBean {
          */
         private boolean async = false;
 
-        public String getRobotUrl() {
-            return robotUrl;
-        }
-
-        public void setRobotUrl(String robotUrl) {
-            this.robotUrl = robotUrl;
-        }
-
-        public String getTokenId() {
-            return tokenId;
-        }
-
-        public void setTokenId(String tokenId) {
-            this.tokenId = tokenId;
-        }
-
-        public String getSecret() {
-            return secret;
-        }
-
-        public void setSecret(String secret) {
-            this.secret = secret;
-        }
-
-        public boolean isDecrypt() {
-            return decrypt;
-        }
-
-        public void setDecrypt(boolean decrypt) {
-            this.decrypt = decrypt;
-        }
-
-        public String getDecryptKey() {
-            return decryptKey;
-        }
-
-        public void setDecryptKey(String decryptKey) {
-            this.decryptKey = decryptKey;
-        }
-
-        public boolean isAsync() {
-            return async;
-        }
-
-        public void setAsync(boolean async) {
-            this.async = async;
-        }
     }
 
     @Override
@@ -234,8 +142,7 @@ public class DingerProperties implements InitializingBean {
                 dinger.secret = null;
             }
 
-            boolean check = dinger.decrypt
-                    && DingerUtils.isEmpty(dinger.decryptKey);
+            boolean check = dinger.decrypt && DingerUtils.isEmpty(dinger.decryptKey);
             if (check) {
                 throw new InvalidPropertiesFormatException(
                         "spring.dinger.decrypt is true but spring.dinger.decrypt-key is empty."

@@ -74,9 +74,7 @@ public class DingerAutoConfiguration implements InitializingBean {
     private void checkConfigFileExists() throws IOException {
 
         if (StringUtils.hasText(this.properties.getDingerLocations())) {
-
             Resource[] resources = this.resourceLoader.getResources(this.properties.getDingerLocations());
-
             Assert.state(resources.length > 0, "Cannot find config location: " + this.properties.getDingerLocations()
                     + " (please add config file or check your Dinger configuration)");
         }

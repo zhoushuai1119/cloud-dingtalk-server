@@ -15,10 +15,13 @@
  */
 package com.cloud.dingtalk.dinger.support;
 
+import cn.hutool.core.date.DateUtil;
+import com.cloud.dingtalk.dinger.config.EnvironConfiguration;
 import com.cloud.dingtalk.dinger.constant.DingerConstant;
 import com.cloud.dingtalk.dinger.core.entity.DingerRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.MessageFormat;
 import java.util.List;
@@ -31,6 +34,12 @@ import java.util.List;
  */
 @Slf4j
 public class MarkDownMessage implements CustomMessage {
+
+    /**
+     * 环境
+     */
+    @Autowired
+    private EnvironConfiguration environConfiguration;
 
     @Override
     public String message(String projectId, DingerRequest request) {
@@ -45,8 +54,8 @@ public class MarkDownMessage implements CustomMessage {
             }
         }
         return MessageFormat.format(
-                "#### 【Dinger通知】 {0} \n - 项目名称: {1}\n- 内容: {2}",
-                text, projectId, content);
+                "【Dinger通知】 {0}\n- 环境: 【{1}】.\n- 内容: {2}.\n- 时间: {3}",
+                projectId, environConfiguration.getEnv(), content, DateUtil.now());
     }
 
 }

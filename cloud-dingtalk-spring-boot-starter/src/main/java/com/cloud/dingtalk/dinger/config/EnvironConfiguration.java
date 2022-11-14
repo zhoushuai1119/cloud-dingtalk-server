@@ -16,8 +16,8 @@ import org.springframework.context.annotation.Configuration;
  * @date: 2022/11/14 15:05
  * @version: v1
  */
-@Configuration
 @Slf4j
+@Configuration
 public class EnvironConfiguration implements InitializingBean, ApplicationContextAware {
 
     @Getter
@@ -61,8 +61,7 @@ public class EnvironConfiguration implements InitializingBean, ApplicationContex
 
         // 5. Set environment to UNKNOW.
         env = "UNKNOW";
-        log.warn(
-                "Environment is set to UNKNOW. Because it is not available in either (1) JVM system property 'spring.profiles.active', (2) OS env variable 'ENV'.");
+        log.warn("Environment is set to UNKNOW. Because it is not available in either (1) JVM system property 'spring.profiles.active', (2) OS env variable 'ENV'.");
     }
 
     @Override

@@ -15,12 +15,17 @@
  */
 package com.cloud.dingtalk.dinger.dingtalk.entity.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * DingTalk支持的消息类型
  *
  * @author shuai.zhou
  * @since 1.0
  */
+@AllArgsConstructor
+@Getter
 public enum  DingTalkMsgType {
     /**
      * text类型
@@ -45,17 +50,8 @@ public enum  DingTalkMsgType {
     /**
      * FeedCard类型
      */
-    FEED_CARD("feedCard")
-
-    ;
+    FEED_CARD("feedCard");
 
     private String type;
 
-    DingTalkMsgType(String type) {
-        this.type = type;
-    }
-
-    public String type() {
-        return type;
-    }
 }

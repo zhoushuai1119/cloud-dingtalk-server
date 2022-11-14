@@ -40,7 +40,7 @@ public class DingMarkDown extends Message {
     private MarkDown markdown;
 
     public DingMarkDown(MarkDown markdown) {
-        setMsgtype(DingTalkMsgType.MARKDOWN.type());
+        setMsgtype(DingTalkMsgType.MARKDOWN.getType());
         this.markdown = markdown;
     }
 

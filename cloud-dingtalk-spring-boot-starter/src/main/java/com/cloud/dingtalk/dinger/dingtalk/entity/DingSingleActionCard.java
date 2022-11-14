@@ -35,7 +35,7 @@ public class DingSingleActionCard extends DingTalkMessage {
     private SingleActionCard actionCard;
 
     public DingSingleActionCard() {
-        setMsgtype(DingTalkMsgType.ACTION_CARD.type());
+        setMsgtype(DingTalkMsgType.ACTION_CARD.getType());
     }
 
     @Data
