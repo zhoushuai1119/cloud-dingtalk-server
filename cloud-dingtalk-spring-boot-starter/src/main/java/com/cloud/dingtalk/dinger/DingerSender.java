@@ -36,6 +36,18 @@ public interface DingerSender {
      * <p>
      * 使用配置的默认消息类型TEXT,{@link MessageSubType}
      *
+     * @param content 请求内容
+     * @return 响应报文
+     */
+    DingerResponse send(String content);
+
+    /**
+     * 发送消息到指定群
+     * <p>
+     * 使用配置的默认钉钉机器人, {@link DingerProperties#getDefaultDinger()}
+     * <p>
+     * 使用配置的默认消息类型TEXT,{@link MessageSubType}
+     *
      * @param request 请求体 {@link DingerRequest}
      * @return 响应报文
      */

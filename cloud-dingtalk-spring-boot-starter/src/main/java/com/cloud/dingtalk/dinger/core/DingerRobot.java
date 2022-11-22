@@ -49,6 +49,11 @@ public class DingerRobot extends AbstractDingerSender {
     }
 
     @Override
+    public DingerResponse send(String content) {
+        return send(dingerProperties.getDefaultDinger(), MessageSubType.TEXT, DingerRequest.request(content));
+    }
+
+    @Override
     public DingerResponse send(DingerRequest request) {
         return send(dingerProperties.getDefaultDinger(), MessageSubType.TEXT, request);
     }
